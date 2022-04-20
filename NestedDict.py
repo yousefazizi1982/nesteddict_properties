@@ -4,16 +4,6 @@ class nested_keys:
         method_name = '_' + type(item).__name__ + '_iteration' if type(item).__name__ in ['list',
                                                                                           'dict'] else '_' + 'other' + '_iteration'
         getattr(nested_keys, method_name)(item, all_key, all_values, root)
-        ## without method_name version###
-        # if isinstance(item, dict):
-        #     nested_keys._dict_iteration(item, all_key, all_values, root)
-        # elif isinstance(item, list):
-        #     nested_keys._list_iteration(item, all_key, all_values, root)
-        #
-        # else:
-        #     nested_keys._other_iteration(item, all_values, all_key, root)
-        # all_key.append(root)
-        # all_values.append(item)
 
     @staticmethod
     def _dict_iteration(item, all_key, all_values, root):
@@ -32,9 +22,6 @@ class nested_keys:
                 nested_keys.main(items, all_key, all_values, root)
             else:
                 nested_keys._other_iteration(items, all_values, all_key, root)
-                # all_key.append(root)
-                # all_values.append(items)
-            # root = []
         return all_values, all_key, root
 
     @staticmethod
